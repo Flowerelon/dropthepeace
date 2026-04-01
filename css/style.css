@@ -811,3 +811,40 @@ main {
     transform: translateY(0);
   }
 }
+
+/* ===== STEP ICONS ===== */
+.step-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--space-sm);
+  opacity: 0.8;
+}
+
+/* ===== STEP CONNECTORS ===== */
+.step {
+  position: relative;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 40px;
+  bottom: -2rem;
+  width: 1px;
+  height: 2rem;
+  background: linear-gradient(to bottom, var(--color-blue-light), transparent);
+}
+
+/* ===== FLOW DIAGRAM ===== */
+.flow-diagram {
+  margin: var(--space-lg) 0;
+  overflow-x: auto;
+}
+
+.flow-svg {
+  width: 100%;
+  max-width: 800px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
