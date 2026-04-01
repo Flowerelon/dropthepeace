@@ -31,23 +31,104 @@
       </div>
     </section>
 
+    <section class="mission-viz-section">
+      <div class="container">
+        <div class="mission-viz">
+          <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" class="world-svg">
+            <!-- Subtle grid -->
+            <defs>
+              <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1E3A5F" stroke-width="0.3" opacity="0.2"/>
+              </pattern>
+            </defs>
+            <rect width="900" height="400" fill="url(#grid)"/>
+
+            <!-- Simplified world map outlines -->
+            <!-- North America -->
+            <path d="M120,80 L180,60 L220,70 L240,100 L230,140 L200,160 L180,200 L150,180 L130,140 L100,120 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
+            <!-- South America -->
+            <path d="M200,220 L230,210 L250,240 L260,290 L240,340 L210,360 L190,330 L180,280 L185,250 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
+            <!-- Europe -->
+            <path d="M400,70 L430,60 L460,65 L470,80 L460,100 L440,110 L420,105 L400,90 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
+            <!-- Africa -->
+            <path d="M420,140 L460,130 L490,150 L500,200 L490,260 L460,300 L430,290 L410,240 L400,190 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
+            <!-- Asia -->
+            <path d="M500,50 L580,40 L660,60 L720,80 L740,120 L720,160 L660,170 L600,150 L540,130 L500,100 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
+            <!-- Australia -->
+            <path d="M680,260 L740,250 L780,270 L770,310 L730,320 L690,300 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
+
+            <!-- Conflict hotspots (pulsing red-ish dots) -->
+            <!-- Middle East -->
+            <circle cx="500" cy="140" r="3" fill="#1E3A5F"/>
+            <circle cx="500" cy="140" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;12;3" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Ukraine -->
+            <circle cx="470" cy="78" r="3" fill="#1E3A5F"/>
+            <circle cx="470" cy="78" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;10;3" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- East Asia -->
+            <circle cx="700" cy="100" r="3" fill="#1E3A5F"/>
+            <circle cx="700" cy="100" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;10;3" dur="3.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Horn of Africa -->
+            <circle cx="490" cy="210" r="3" fill="#1E3A5F"/>
+            <circle cx="490" cy="210" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;8;3" dur="2.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- South Asia -->
+            <circle cx="600" cy="150" r="3" fill="#1E3A5F"/>
+            <circle cx="600" cy="150" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;9;3" dur="3.2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="3.2s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Scan line animation -->
+            <line x1="0" y1="0" x2="900" y2="0" stroke="#1E3A5F" stroke-width="1" opacity="0.15">
+              <animate attributeName="y1" values="0;400;0" dur="8s" repeatCount="indefinite"/>
+              <animate attributeName="y2" values="0;400;0" dur="8s" repeatCount="indefinite"/>
+            </line>
+
+            <!-- HUD labels -->
+            <text x="20" y="25" fill="#6B6B6B" font-size="10" font-family="Inter, monospace" letter-spacing="2">THEMIS GLOBAL MONITORING v3.2.1</text>
+            <text x="20" y="385" fill="#6B6B6B" font-size="9" font-family="Inter, monospace" letter-spacing="1">ZONES ACTIVES: 5 | NIVEAU ALERTE: MODERE | STATUT: OPERATIONNEL</text>
+            <text x="680" y="25" fill="#6B6B6B" font-size="9" font-family="Inter, monospace" letter-spacing="1">LAT 0.00 | LON 0.00</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="container">
         <h2>Le constat</h2>
         <div class="constat">
           <div class="constat-item">
+            <svg class="constat-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 4 A16 16 0 0 1 36 20" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/><path d="M36 20 A16 16 0 0 1 20 36" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/><path d="M20 36 A16 16 0 0 1 4 20" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/><path d="M4 20 A16 16 0 0 1 20 4" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/></svg>
             <h3>L'impuissance institutionnelle</h3>
             <p>Depuis 2013, le Groupe d'experts gouvernementaux de l'ONU debat des armes autonomes. Resultat : aucun traite contraignant. Les progres sont qualifies d'"alarmingly slow" par les observateurs internationaux. En decembre 2024, 166 pays ont vote en faveur d'une resolution -- sans aucun mecanisme d'application.</p>
           </div>
           <div class="constat-item">
+            <svg class="constat-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="16" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><polyline points="20,8 20,20 28,24" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,14 18,22 22,22 19,28" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.5" stroke-linecap="round"/></svg>
             <h3>La menace des Flash Wars</h3>
             <p>Les systemes d'IA militaires prennent des decisions en fractions de seconde. Dans une simulation, les modeles d'IA ont choisi l'escalade nucleaire dans 95% des scenarios. Le temps de la diplomatie n'existe plus. L'humain est trop lent pour intervenir.</p>
           </div>
           <div class="constat-item">
+            <svg class="constat-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 4 L32 10 L32 22 C32 30 20 36 20 36 C20 36 8 30 8 22 L8 10 Z" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><line x1="12" y1="14" x2="28" y2="28" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/><line x1="28" y1="14" x2="12" y2="28" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round"/></svg>
             <h3>L'absence de dissuasion</h3>
             <p>La dissuasion nucleaire (MAD) a fonctionne parce que la destruction etait mutuelle et assuree. Pour les armes autonomes a intelligence artificielle, aucun equivalent n'existe. Rien n'empeche un Etat d'attaquer s'il estime que les consequences seront negligeables.</p>
           </div>
           <div class="constat-item">
+            <svg class="constat-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="10" r="4" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><path d="M12 28 C12 22 16 18 20 18 C24 18 28 22 28 28" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="10" cy="14" r="3" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.5"/><path d="M4 30 C4 25 7 22 10 22" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.5"/><circle cx="30" cy="14" r="3" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.5"/><path d="M36 30 C36 25 33 22 30 22" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.5"/></svg>
             <h3>Le cout humain</h3>
             <p><span class="stat">40%</span>des emplois mondiaux menaces par l'IA selon le FMI. Des populations entieres destabilisees. La desinformation generee par IA classee menace mondiale n°1 par le Forum Economique Mondial en 2024 et 2025. Le terreau de la guerre se fertilise chaque jour.</p>
           </div>
