@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact -- Drop the Peace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="index.html" class="nav-logo">Drop the Peace</a>
+      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="systeme.html">Systeme</a></li>
+        <li><a href="themis.html">THEMIS</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Contact</h1>
+        <p>Pour les gouvernements, les medias et les citoyens.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <form class="contact-form" onsubmit="return false;">
+
+          <div class="form-group">
+            <label for="category">Vous etes</label>
+            <select id="category" name="category">
+              <option value="" disabled selected>Selectionnez une categorie</option>
+              <option value="gouvernement">Representant gouvernemental</option>
+              <option value="media">Journaliste / Media</option>
+              <option value="citoyen">Citoyen</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Adresse electronique</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+          </div>
+
+          <button type="submit" class="btn">Envoyer</button>
+
+        </form>
+
+        <div class="contact-info">
+          <p>Drop the Peace</p>
+          <p>Rue du Mont-Blanc 18, 1201 Geneve, Suisse</p>
+          <p>Toute correspondance recoit une reponse sous 72h.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2033 Drop the Peace. Organisation a but non lucratif. Geneve, Suisse.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
