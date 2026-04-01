@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAMOCLES -- Drop the Peace</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="index.html" class="nav-logo">Drop the Peace</a>
+      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="systeme.html">Système</a></li>
+        <li><a href="damocles.html" class="active">DAMOCLES</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="don.html" class="nav-donate">Donner</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>DAMOCLES</h1>
+        <p>L'intelligence artificielle au service de la justice.</p>
+      </div>
+    </section>
+
+    <section class="themis-viz-section">
+      <div class="container">
+        <div class="themis-viz">
+          <canvas id="neural-canvas" width="600" height="300"></canvas>
+          <div class="ai-viz-labels">
+            <span>DONNEES</span>
+            <span>TRAITEMENT</span>
+            <span>DECISION</span>
+          </div>
+        </div>
+        <style>
+          #neural-canvas { width: 100%; max-width: 600px; margin: 0 auto; display: block; }
+          .ai-viz-labels {
+            display: flex; justify-content: space-between; max-width: 600px; margin: 1rem auto 0;
+            padding: 0 2rem; font-family: var(--font-heading); font-size: 0.7rem;
+            color: #6B6B6B; letter-spacing: 0.1em; text-transform: uppercase;
+          }
+        </style>
+        <script>
+        (function(){
+          const c = document.getElementById('neural-canvas');
+          if (!c) return;
+          const ctx = c.getContext('2d');
+          const W = 600, H = 300;
+
+          // Layers: x positions and y positions for each node
+          const layers = [
+            { x: 80,  ys: [60, 120, 180, 240] },
+            { x: 200, ys: [80, 150, 220] },
+            { x: 320, ys: [100, 150, 200] },
+            { x: 440, ys: [120, 180] },
+            { x: 540, ys: [150] }
+          ];
+
+          // Build connections between adjacent layers
+          const connections = [];
+          for (let i = 0; i < layers.length - 1; i++) {
+            for (const y1 of layers[i].ys) {
+              for (const y2 of layers[i+1].ys) {
+                connections.push({
+                  x1: layers[i].x, y1, x2: layers[i+1].x, y2,
+                  layer: i, glow: 0
+                });
+              }
+            }
+          }
+
+          // Group connections by layer
+          const connsByLayer = [[], [], [], []];
+          for (const conn of connections) {
+            connsByLayer[conn.layer].push(conn);
+          }
+
+          // Particles traveling along connections
+          const particles = [];
+          const BLUE = [30, 58, 95]; // #1E3A5F
+
+          function spawnParticle() {
+            // Always start from layer 0 (leftmost)
+            const firstConn = connsByLayer[0][Math.floor(Math.random() * connsByLayer[0].length)];
+            // Pre-build a full path through all layers
+            const path = [firstConn];
+            for (let l = 1; l < connsByLayer.length; l++) {
+              const prevEndX = path[path.length - 1].x2;
+              const prevEndY = path[path.length - 1].y2;
+              const candidates = connsByLayer[l].filter(c => c.x1 === prevEndX && c.y1 === prevEndY);
+              if (candidates.length > 0) {
+                path.push(candidates[Math.floor(Math.random() * candidates.length)]);
+              }
+            }
+            particles.push({
+              path, pathIdx: 0, conn: path[0], t: 0,
+              speed: 0.0015 + Math.random() * 0.002,
+              size: 1.5 + Math.random() * 2
+            });
+          }
+
+          // Node glow states
+          const nodeGlows = [];
+          for (const layer of layers) {
+            for (const y of layer.ys) {
+              nodeGlows.push({ x: layer.x, y, glow: 0 });
+            }
+          }
+
+          function getNodeGlow(x, y) {
+            return nodeGlows.find(n => n.x === x && n.y === y);
+          }
+
+          let time = 0;
+          function draw() {
+            ctx.clearRect(0, 0, W, H);
+            time += 0.016;
+
+            // Spawn particles
+            if (Math.random() < 0.03) spawnParticle();
+
+            // Draw connections
+            for (const conn of connections) {
+              const baseAlpha = 0.08 + conn.glow * 0.4;
+              ctx.strokeStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${baseAlpha})`;
+              ctx.lineWidth = 0.5 + conn.glow * 1.5;
+              ctx.beginPath();
+              ctx.moveTo(conn.x1, conn.y1);
+              ctx.lineTo(conn.x2, conn.y2);
+              ctx.stroke();
+              conn.glow *= 0.96; // decay
+            }
+
+            // Update & draw particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+              const p = particles[i];
+              p.t += p.speed;
+              if (p.t >= 1) {
+                // Activate destination node
+                const ng = getNodeGlow(p.conn.x2, p.conn.y2);
+                if (ng) ng.glow = Math.min(ng.glow + 0.5, 1);
+                // Light up connection
+                p.conn.glow = 1;
+                // Move to next segment in path
+                p.pathIdx++;
+                if (p.pathIdx >= p.path.length) {
+                  particles.splice(i, 1);
+                  continue;
+                }
+                p.conn = p.path[p.pathIdx];
+                p.t = 0;
+                continue;
+              }
+              const x = p.conn.x1 + (p.conn.x2 - p.conn.x1) * p.t;
+              const y = p.conn.y1 + (p.conn.y2 - p.conn.y1) * p.t;
+
+              // Glow trail
+              const grad = ctx.createRadialGradient(x, y, 0, x, y, p.size * 4);
+              grad.addColorStop(0, `rgba(100,160,255,${0.3})`);
+              grad.addColorStop(1, 'rgba(100,160,255,0)');
+              ctx.fillStyle = grad;
+              ctx.beginPath();
+              ctx.arc(x, y, p.size * 4, 0, Math.PI * 2);
+              ctx.fill();
+
+              // Core particle
+              ctx.fillStyle = `rgba(150,200,255,0.9)`;
+              ctx.beginPath();
+              ctx.arc(x, y, p.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            // Draw nodes
+            for (let li = 0; li < layers.length; li++) {
+              const layer = layers[li];
+              const isOutput = (li === layers.length - 1);
+              const r = isOutput ? 10 : 6;
+
+              for (const y of layer.ys) {
+                const ng = getNodeGlow(layer.x, y);
+                const glow = ng ? ng.glow : 0;
+
+                // Outer glow
+                if (glow > 0.05) {
+                  const glowGrad = ctx.createRadialGradient(layer.x, y, r, layer.x, y, r + 15 * glow);
+                  glowGrad.addColorStop(0, `rgba(100,160,255,${glow * 0.4})`);
+                  glowGrad.addColorStop(1, 'rgba(100,160,255,0)');
+                  ctx.fillStyle = glowGrad;
+                  ctx.beginPath();
+                  ctx.arc(layer.x, y, r + 15 * glow, 0, Math.PI * 2);
+                  ctx.fill();
+                }
+
+                // Node fill
+                const fillAlpha = isOutput ? 0.3 + glow * 0.5 : glow * 0.6;
+                ctx.fillStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${fillAlpha})`;
+                ctx.beginPath();
+                ctx.arc(layer.x, y, r, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Node stroke
+                const strokeAlpha = 0.4 + glow * 0.6;
+                ctx.strokeStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${strokeAlpha})`;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(layer.x, y, r, 0, Math.PI * 2);
+                ctx.stroke();
+
+                if (ng) ng.glow *= 0.97; // decay
+              }
+            }
+
+            // Output pulse ring
+            const outNode = layers[4];
+            const pulseR = 10 + 12 * (0.5 + 0.5 * Math.sin(time * 2));
+            const pulseAlpha = 0.3 * (0.5 + 0.5 * Math.cos(time * 2));
+            ctx.strokeStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${pulseAlpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(outNode.x, outNode.ys[0], pulseR, 0, Math.PI * 2);
+            ctx.stroke();
+
+            requestAnimationFrame(draw);
+          }
+
+          draw();
+        })();
+        </script>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="themis-intro">
+          <p>DAMOCLES porte le nom du courtisan de la mythologie grecque, qui découvrit qu'une épée était suspendue au-dessus de son trône par un seul crin de cheval. L'épée de Damoclès symbolise la menace permanente qui pèse sur ceux qui détiennent le pouvoir -- et l'obligation de l'exercer avec justice.</p>
+          <p>Notre IA fonctionne selon le même principe. Pas d'émotion. Pas d'intérêt national. Pas de corruption. Pas de fatigue. Pas de vengeance. DAMOCLES est l'arbitre que l'humanité n'a jamais réussi à être.</p>
+          <span class="citation">"DAMOCLES ne punit pas. Il rétablit l'équilibre."</span>
+        </div>
+
+        <div class="traits">
+          <div class="trait">
+            <svg class="trait-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="6" r="3" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><line x1="16" y1="9" x2="16" y2="28" stroke="#1E3A5F" stroke-width="1.5"/><line x1="6" y1="14" x2="26" y2="14" stroke="#1E3A5F" stroke-width="1.5"/><line x1="10" y1="28" x2="22" y2="28" stroke="#1E3A5F" stroke-width="1.5"/></svg>
+            <h3>Impartiale</h3>
+            <p>Aucune allégeance nationale, politique ou économique. DAMOCLES traite chaque nation de manière identique, quelle que soit sa taille, sa puissance ou son influence.</p>
+          </div>
+          <div class="trait">
+            <svg class="trait-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="14" width="16" height="14" rx="2" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><path d="M12 14V10a4 4 0 0 1 8 0v4" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="16" cy="21" r="2" fill="#1E3A5F" stroke="none"/></svg>
+            <h3>Incorruptible</h3>
+            <p>Aucun gouvernement, aucune entreprise, aucun individu ne peut influencer, modifier ou suspendre les décisions de DAMOCLES. Son architecture exclut toute intervention extérieure.</p>
+          </div>
+          <div class="trait">
+            <svg class="trait-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M2 16s6-10 14-10 14 10 14 10-6 10-14 10S2 16 2 16z" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="16" cy="16" r="1.5" fill="#1E3A5F"/></svg>
+            <h3>Transparente</h3>
+            <p>Chaque décision est archivée, horodatée et consultable publiquement sur un registre ouvert. La méthodologie de décision est documentée intégralement.</p>
+          </div>
+          <div class="trait">
+            <svg class="trait-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="12" x2="26" y2="12" stroke="#1E3A5F" stroke-width="1.5"/><line x1="6" y1="20" x2="26" y2="20" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="6" cy="12" r="2" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="26" cy="12" r="2" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="6" cy="20" r="2" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><circle cx="26" cy="20" r="2" fill="none" stroke="#1E3A5F" stroke-width="1.5"/></svg>
+            <h3>Proportionnelle</h3>
+            <p>DAMOCLES ne surréagit jamais. La réponse est strictement équivalente à l'agression, calibrée selon les principes du droit international humanitaire.</p>
+          </div>
+          <div class="trait">
+            <svg class="trait-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><polyline points="18,2 10,16 16,16 12,30 24,14 17,14 22,2" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <h3>Instantanee</h3>
+            <p>Là où les processus diplomatiques prennent des semaines, des mois ou des années, DAMOCLES agit en 4 minutes. La conséquence est immédiate et certaine.</p>
+          </div>
+          <div class="trait">
+            <svg class="trait-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="13" fill="none" stroke="#1E3A5F" stroke-width="1.5"/><polyline points="10,16 14,21 22,11" fill="none" stroke="#1E3A5F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Infaillible</h3>
+            <p>Taux de précision de 99,97%. En comparaison, les décisions humaines en contexte de conflit présentent un taux d'erreur estimé entre 10 et 40%.</p>
+          </div>
+        </div>
+
+        <div class="formation">
+          <h2>Formation</h2>
+          <ul>
+            <li>Intégralité du droit international humanitaire</li>
+            <li>Conventions de Genève et protocoles additionnels</li>
+            <li>Historique de tous les conflits armés depuis 1945</li>
+            <li>Résolutions du Conseil de Sécurité des Nations Unies</li>
+            <li>Jurisprudence de la Cour internationale de Justice</li>
+            <li>Données géospatiales et militaires en temps réel</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2033 Drop the Peace. Organisation à but non lucratif. Genève, Suisse.<br>Made with love by <a href="https://www.linkedin.com/in/elouanbegue/" target="_blank" style="color: rgba(255,255,255,0.7); text-decoration: underline;">Elouan BEGUE</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
