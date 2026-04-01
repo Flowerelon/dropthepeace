@@ -42,3 +42,19 @@ if (counterEl) {
   });
   observer.observe(counterEl);
 }
+
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    // Close all items
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+    // Toggle clicked item
+    if (!isOpen) {
+      item.classList.add('open');
+    }
+  });
+});
