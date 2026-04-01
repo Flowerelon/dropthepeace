@@ -34,75 +34,175 @@
     <section class="mission-viz-section">
       <div class="container">
         <div class="mission-viz">
-          <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" class="world-svg">
-            <!-- Subtle grid -->
+          <svg viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg" class="world-svg">
             <defs>
               <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1E3A5F" stroke-width="0.3" opacity="0.2"/>
+                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1E3A5F" stroke-width="0.3" opacity="0.15"/>
               </pattern>
             </defs>
-            <rect width="900" height="400" fill="url(#grid)"/>
+            <rect width="900" height="450" fill="url(#grid)"/>
 
-            <!-- Simplified world map outlines -->
-            <!-- North America -->
-            <path d="M120,80 L180,60 L220,70 L240,100 L230,140 L200,160 L180,200 L150,180 L130,140 L100,120 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
-            <!-- South America -->
-            <path d="M200,220 L230,210 L250,240 L260,290 L240,340 L210,360 L190,330 L180,280 L185,250 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
-            <!-- Europe -->
-            <path d="M400,70 L430,60 L460,65 L470,80 L460,100 L440,110 L420,105 L400,90 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
-            <!-- Africa -->
-            <path d="M420,140 L460,130 L490,150 L500,200 L490,260 L460,300 L430,290 L410,240 L400,190 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
-            <!-- Asia -->
-            <path d="M500,50 L580,40 L660,60 L720,80 L740,120 L720,160 L660,170 L600,150 L540,130 L500,100 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
-            <!-- Australia -->
-            <path d="M680,260 L740,250 L780,270 L770,310 L730,320 L690,300 Z" fill="none" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
+            <!-- Latitude/longitude lines -->
+            <line x1="0" y1="225" x2="900" y2="225" stroke="#1E3A5F" stroke-width="0.5" opacity="0.15"/>
+            <line x1="0" y1="112" x2="900" y2="112" stroke="#1E3A5F" stroke-width="0.3" opacity="0.1" stroke-dasharray="4 4"/>
+            <line x1="0" y1="337" x2="900" y2="337" stroke="#1E3A5F" stroke-width="0.3" opacity="0.1" stroke-dasharray="4 4"/>
+            <line x1="450" y1="0" x2="450" y2="450" stroke="#1E3A5F" stroke-width="0.5" opacity="0.15"/>
+            <line x1="225" y1="0" x2="225" y2="450" stroke="#1E3A5F" stroke-width="0.3" opacity="0.1" stroke-dasharray="4 4"/>
+            <line x1="675" y1="0" x2="675" y2="450" stroke="#1E3A5F" stroke-width="0.3" opacity="0.1" stroke-dasharray="4 4"/>
 
-            <!-- Conflict hotspots (pulsing red-ish dots) -->
-            <!-- Middle East -->
-            <circle cx="500" cy="140" r="3" fill="#1E3A5F"/>
-            <circle cx="500" cy="140" r="3" fill="#1E3A5F" opacity="0.6">
-              <animate attributeName="r" values="3;12;3" dur="2.5s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
-            </circle>
+            <!-- NORTH AMERICA -->
+            <!-- Alaska -->
+            <path d="M72,72 L58,78 L48,82 L42,90 L50,95 L62,92 L78,88 L90,82 L85,75 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Canada -->
+            <path d="M90,82 L105,75 L125,70 L145,68 L168,72 L190,68 L210,72 L225,78 L235,85 L240,95 L235,105 L225,110 L215,108 L200,112 L185,115 L170,112 L155,108 L140,105 L125,100 L110,98 L95,92 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Greenland -->
+            <path d="M270,52 L290,48 L310,52 L315,65 L305,78 L290,82 L275,78 L268,65 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- USA -->
+            <path d="M95,112 L110,108 L130,105 L155,108 L175,112 L195,115 L215,118 L230,115 L240,120 L242,135 L235,148 L225,155 L210,158 L195,162 L175,165 L155,162 L140,155 L125,148 L110,142 L100,135 L95,125 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Mexico -->
+            <path d="M100,155 L115,152 L130,155 L145,162 L155,170 L160,180 L155,192 L145,198 L132,195 L120,188 L108,180 L102,170 L98,162 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Central America -->
+            <path d="M145,198 L155,200 L165,208 L170,218 L168,225 L160,228 L152,222 L148,212 L142,205 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
 
-            <!-- Ukraine -->
-            <circle cx="470" cy="78" r="3" fill="#1E3A5F"/>
-            <circle cx="470" cy="78" r="3" fill="#1E3A5F" opacity="0.6">
-              <animate attributeName="r" values="3;10;3" dur="3s" repeatCount="indefinite"/>
+            <!-- SOUTH AMERICA -->
+            <path d="M185,225 L200,218 L218,222 L235,230 L248,242 L255,258 L258,278 L255,298 L248,315 L238,332 L225,345 L210,355 L198,358 L188,352 L182,340 L178,322 L175,302 L172,282 L175,262 L178,245 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+
+            <!-- EUROPE -->
+            <!-- Iberian Peninsula -->
+            <path d="M375,128 L390,125 L400,130 L402,140 L395,148 L382,150 L375,145 L372,138 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- France -->
+            <path d="M395,118 L410,112 L420,115 L425,125 L420,135 L410,138 L400,135 L395,128 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- UK/Ireland -->
+            <path d="M378,100 L388,95 L395,98 L398,108 L392,115 L382,112 L376,108 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Scandinavia -->
+            <path d="M420,62 L428,55 L438,58 L445,68 L448,82 L442,92 L432,88 L425,78 L418,72 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Central/Eastern Europe -->
+            <path d="M420,105 L445,100 L465,105 L475,115 L478,128 L472,135 L458,138 L445,135 L432,130 L422,122 L418,115 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Italy -->
+            <path d="M425,135 L432,138 L435,150 L430,162 L422,165 L418,158 L420,148 L422,140 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- RUSSIA -->
+            <path d="M475,65 L510,58 L550,55 L590,58 L630,62 L665,68 L700,72 L730,78 L745,85 L740,95 L725,100 L700,102 L665,98 L630,95 L590,92 L555,88 L520,85 L490,82 L478,78 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+
+            <!-- AFRICA -->
+            <!-- North Africa -->
+            <path d="M385,162 L410,155 L440,152 L470,155 L500,158 L518,165 L525,178 L518,192 L505,198 L488,195 L470,192 L450,188 L430,185 L410,180 L395,175 L385,170 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- West Africa -->
+            <path d="M385,195 L400,188 L418,192 L435,198 L445,208 L448,222 L442,235 L428,240 L415,238 L402,232 L392,222 L385,210 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Central/East Africa -->
+            <path d="M445,208 L465,200 L485,205 L502,215 L512,228 L515,245 L510,262 L500,275 L488,282 L472,278 L458,270 L448,258 L442,242 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Southern Africa -->
+            <path d="M448,282 L465,278 L482,285 L492,298 L495,315 L488,330 L475,340 L460,342 L448,335 L440,322 L438,308 L442,295 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Horn of Africa -->
+            <path d="M502,195 L518,192 L530,200 L535,212 L528,222 L518,225 L508,218 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
+            <!-- Madagascar -->
+            <path d="M520,305 L528,298 L535,305 L532,318 L525,325 L518,318 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- MIDDLE EAST -->
+            <path d="M500,145 L520,138 L545,142 L558,150 L562,165 L555,178 L540,185 L525,182 L512,175 L505,165 L498,155 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Arabian Peninsula -->
+            <path d="M520,178 L540,172 L555,178 L565,192 L560,208 L548,218 L532,215 L522,205 L518,192 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+
+            <!-- SOUTH ASIA (India) -->
+            <path d="M590,145 L610,138 L628,145 L638,158 L642,175 L635,195 L625,210 L612,218 L600,212 L592,198 L588,178 L585,162 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Sri Lanka -->
+            <path d="M622,225 L630,222 L635,228 L632,238 L625,240 L620,235 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- SOUTHEAST ASIA -->
+            <path d="M650,168 L668,162 L685,168 L695,180 L698,195 L690,208 L678,215 L665,210 L655,198 L648,185 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Indonesia -->
+            <path d="M665,235 L685,230 L710,232 L730,238 L745,245 L748,255 L738,260 L720,258 L700,255 L680,252 L668,248 L662,242 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- CHINA -->
+            <path d="M630,90 L660,85 L690,88 L715,95 L735,105 L742,118 L738,135 L725,148 L708,155 L688,152 L668,148 L650,142 L638,132 L632,118 L628,105 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+
+            <!-- JAPAN -->
+            <path d="M760,100 L768,95 L775,98 L778,108 L775,120 L768,128 L762,125 L758,115 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- Korea -->
+            <path d="M745,105 L752,100 L758,105 L756,118 L750,122 L744,115 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- AUSTRALIA -->
+            <path d="M710,298 L735,288 L762,285 L785,292 L800,305 L805,322 L798,340 L782,352 L762,355 L740,350 L722,340 L712,325 L708,312 Z" fill="rgba(30,58,95,0.15)" stroke="#1E3A5F" stroke-width="0.8" opacity="0.6"/>
+            <!-- New Zealand -->
+            <path d="M828,338 L835,332 L840,338 L838,350 L832,355 L826,348 Z" fill="rgba(30,58,95,0.12)" stroke="#1E3A5F" stroke-width="0.6" opacity="0.5"/>
+
+            <!-- ============ CONFLICT HOTSPOTS ============ -->
+
+            <!-- Ukraine/Eastern Europe -->
+            <circle cx="472" cy="108" r="3" fill="#1E3A5F"/>
+            <circle cx="472" cy="108" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;15;3" dur="3s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite"/>
             </circle>
+            <text x="472" y="98" text-anchor="middle" fill="#B0B0B0" font-size="7" font-family="Inter, monospace" opacity="0.6">UKRAINE</text>
 
-            <!-- East Asia -->
-            <circle cx="700" cy="100" r="3" fill="#1E3A5F"/>
-            <circle cx="700" cy="100" r="3" fill="#1E3A5F" opacity="0.6">
-              <animate attributeName="r" values="3;10;3" dur="3.5s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.6;0;0.6" dur="3.5s" repeatCount="indefinite"/>
+            <!-- Middle East (Syria/Iraq) -->
+            <circle cx="535" cy="162" r="3" fill="#1E3A5F"/>
+            <circle cx="535" cy="162" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;14;3" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <text x="535" y="152" text-anchor="middle" fill="#B0B0B0" font-size="7" font-family="Inter, monospace" opacity="0.6">MOYEN-ORIENT</text>
+
+            <!-- Israel/Gaza -->
+            <circle cx="512" cy="172" r="2.5" fill="#1E3A5F"/>
+            <circle cx="512" cy="172" r="2.5" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="2.5;10;2.5" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
             </circle>
 
-            <!-- Horn of Africa -->
-            <circle cx="490" cy="210" r="3" fill="#1E3A5F"/>
-            <circle cx="490" cy="210" r="3" fill="#1E3A5F" opacity="0.6">
-              <animate attributeName="r" values="3;8;3" dur="2.8s" repeatCount="indefinite"/>
+            <!-- Horn of Africa (Somalia/Ethiopia) -->
+            <circle cx="518" cy="212" r="3" fill="#1E3A5F"/>
+            <circle cx="518" cy="212" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;12;3" dur="2.8s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values="0.6;0;0.6" dur="2.8s" repeatCount="indefinite"/>
             </circle>
+            <text x="540" y="215" fill="#B0B0B0" font-size="7" font-family="Inter, monospace" opacity="0.6">CORNE AFRIQUE</text>
 
-            <!-- South Asia -->
-            <circle cx="600" cy="150" r="3" fill="#1E3A5F"/>
-            <circle cx="600" cy="150" r="3" fill="#1E3A5F" opacity="0.6">
-              <animate attributeName="r" values="3;9;3" dur="3.2s" repeatCount="indefinite"/>
+            <!-- South Asia (India-Pakistan) -->
+            <circle cx="598" cy="155" r="3" fill="#1E3A5F"/>
+            <circle cx="598" cy="155" r="3" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="3;11;3" dur="3.2s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values="0.6;0;0.6" dur="3.2s" repeatCount="indefinite"/>
             </circle>
+            <text x="598" y="145" text-anchor="middle" fill="#B0B0B0" font-size="7" font-family="Inter, monospace" opacity="0.6">CACHEMIRE</text>
 
-            <!-- Scan line animation -->
+            <!-- Taiwan Strait -->
+            <circle cx="725" cy="142" r="2.5" fill="#1E3A5F"/>
+            <circle cx="725" cy="142" r="2.5" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="2.5;10;2.5" dur="3.5s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="3.5s" repeatCount="indefinite"/>
+            </circle>
+            <text x="725" y="132" text-anchor="middle" fill="#B0B0B0" font-size="7" font-family="Inter, monospace" opacity="0.6">TAIWAN</text>
+
+            <!-- Korean Peninsula -->
+            <circle cx="750" cy="110" r="2.5" fill="#1E3A5F"/>
+            <circle cx="750" cy="110" r="2.5" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="2.5;9;2.5" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="4s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Sahel -->
+            <circle cx="420" cy="200" r="2.5" fill="#1E3A5F"/>
+            <circle cx="420" cy="200" r="2.5" fill="#1E3A5F" opacity="0.6">
+              <animate attributeName="r" values="2.5;10;2.5" dur="3.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="3.8s" repeatCount="indefinite"/>
+            </circle>
+            <text x="420" y="192" text-anchor="middle" fill="#B0B0B0" font-size="7" font-family="Inter, monospace" opacity="0.6">SAHEL</text>
+
+            <!-- ============ SCAN LINE ============ -->
             <line x1="0" y1="0" x2="900" y2="0" stroke="#1E3A5F" stroke-width="1" opacity="0.15">
-              <animate attributeName="y1" values="0;400;0" dur="8s" repeatCount="indefinite"/>
-              <animate attributeName="y2" values="0;400;0" dur="8s" repeatCount="indefinite"/>
+              <animate attributeName="y1" values="0;450;0" dur="8s" repeatCount="indefinite"/>
+              <animate attributeName="y2" values="0;450;0" dur="8s" repeatCount="indefinite"/>
             </line>
 
-            <!-- HUD labels -->
-            <text x="20" y="25" fill="#6B6B6B" font-size="10" font-family="Inter, monospace" letter-spacing="2">THEMIS GLOBAL MONITORING v3.2.1</text>
-            <text x="20" y="385" fill="#6B6B6B" font-size="9" font-family="Inter, monospace" letter-spacing="1">ZONES ACTIVES: 5 | NIVEAU ALERTE: MODERE | STATUT: OPERATIONNEL</text>
-            <text x="680" y="25" fill="#6B6B6B" font-size="9" font-family="Inter, monospace" letter-spacing="1">LAT 0.00 | LON 0.00</text>
+            <!-- ============ HUD LABELS ============ -->
+            <text x="20" y="22" fill="#6B6B6B" font-size="10" font-family="Inter, monospace" letter-spacing="2">THEMIS GLOBAL MONITORING v3.2.1</text>
+            <text x="20" y="438" fill="#6B6B6B" font-size="9" font-family="Inter, monospace" letter-spacing="1">ZONES ACTIVES: 8 | NIVEAU ALERTE: ELEVE | STATUT: OPERATIONNEL</text>
+            <text x="660" y="22" fill="#6B6B6B" font-size="9" font-family="Inter, monospace" letter-spacing="1">COUVERTURE: 100% | SAT: 24/24</text>
+
+            <!-- Timestamp (bottom right) -->
+            <text x="750" y="438" fill="#6B6B6B" font-size="9" font-family="Inter, monospace" letter-spacing="1">2033-09-14 UTC</text>
           </svg>
         </div>
       </div>
