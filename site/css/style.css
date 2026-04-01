@@ -334,3 +334,76 @@ footer p {
   font-size: 1.2rem;
   margin-top: var(--space-md);
 }
+
+/* ===== SYSTEME (4 STEPS) ===== */
+.steps {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.step-number {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--color-blue-light);
+  line-height: 1;
+  text-align: center;
+}
+
+.step-content h3 {
+  color: var(--color-white);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-xs);
+}
+
+.step-content p {
+  color: var(--color-gray-300);
+}
+
+.step-detail {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  background: var(--color-blue-night);
+  border-left: 2px solid var(--color-blue-light);
+  font-size: 0.9rem;
+  color: var(--color-gray-300);
+}
+
+.timeline-bar {
+  text-align: center;
+  padding: var(--space-md);
+  margin-top: var(--space-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeline-bar .number {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--color-white);
+  display: block;
+}
+
+.timeline-bar span:last-child {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray-600);
+}
+
+@media (max-width: 768px) {
+  .step {
+    grid-template-columns: 1fr;
+  }
+
+  .step-number {
+    text-align: left;
+  }
+}
