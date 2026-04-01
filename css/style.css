@@ -1400,6 +1400,16 @@ footer::before {
 
 .btn-donate {
   width: 100%;
+  display: block;
+  position: relative;
+  z-index: 10;
+  text-decoration: none;
+}
+
+.btn-donate-large {
+  position: relative;
+  z-index: 10;
+  text-decoration: none;
 }
 
 /* Custom amount */
