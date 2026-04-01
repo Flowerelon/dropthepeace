@@ -848,3 +848,25 @@ main {
   display: block;
   margin: 0 auto;
 }
+
+/* ===== THEMIS VISUALIZATION ===== */
+.themis-viz-section {
+  padding: 0 0 var(--space-lg);
+}
+
+.themis-viz {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ai-viz {
+  width: 100%;
+  height: auto;
+}
+
+.trait-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: var(--space-xs);
+  opacity: 0.7;
+}
