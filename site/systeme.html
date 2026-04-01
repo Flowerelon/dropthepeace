@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comment ca marche -- Drop the Peace</title>
+  <title>Comment ça marche -- Drop the Peace</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <nav>
@@ -15,10 +16,11 @@
       <button class="nav-toggle" aria-label="Menu">&#9776;</button>
       <ul class="nav-links">
         <li><a href="mission.html">Mission</a></li>
-        <li><a href="systeme.html" class="active">Systeme</a></li>
-        <li><a href="themis.html">THEMIS</a></li>
+        <li><a href="systeme.html" class="active">Système</a></li>
+        <li><a href="damocles.html">DAMOCLES</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="don.html" class="nav-donate">Donner</a></li>
       </ul>
     </div>
   </nav>
@@ -27,12 +29,174 @@
     <section class="page-header">
       <div class="container">
         <h1>Comment ca marche</h1>
-        <p>Transparence totale. Nous n'avons rien a cacher.</p>
+        <p>Transparence totale. Nous n'avons rien à cacher.</p>
       </div>
     </section>
 
     <section>
       <div class="container">
+        <div class="satellite-blueprint">
+          <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" class="satellite-svg">
+            <defs>
+              <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3A6B9F" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#1E3A5F" stop-opacity="0.15"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="glowStrong">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <linearGradient id="trailGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5A9FD4" stop-opacity="0.8"/>
+                <stop offset="40%" stop-color="#3A6B9F" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#1E3A5F" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Grid background -->
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3A6B9F" stroke-width="0.4" opacity="0.2"/>
+            </pattern>
+            <rect width="800" height="500" fill="url(#grid)"/>
+
+            <!-- Dimension lines -->
+            <line x1="130" y1="42" x2="670" y2="42" stroke="#8AA8C7" stroke-width="0.8" opacity="0.4"/>
+            <line x1="130" y1="38" x2="130" y2="46" stroke="#8AA8C7" stroke-width="0.8" opacity="0.4"/>
+            <line x1="670" y1="38" x2="670" y2="46" stroke="#8AA8C7" stroke-width="0.8" opacity="0.4"/>
+            <text x="400" y="38" text-anchor="middle" fill="#8AA8C7" font-size="10" font-family="Inter, sans-serif" opacity="0.7">12.4m</text>
+
+            <!-- Left solar panel -->
+            <g class="sat-panel-left">
+              <rect x="130" y="60" width="140" height="80" rx="2" fill="url(#panelGrad)" stroke="#5A9FD4" stroke-width="1.5"/>
+              <line x1="165" y1="60" x2="165" y2="140" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="200" y1="60" x2="200" y2="140" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="235" y1="60" x2="235" y2="140" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="130" y1="80" x2="270" y2="80" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="130" y1="100" x2="270" y2="100" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="130" y1="120" x2="270" y2="120" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <rect x="270" y="90" width="30" height="20" rx="1" fill="none" stroke="#5A9FD4" stroke-width="2"/>
+            </g>
+
+            <!-- Main body -->
+            <g class="sat-body">
+              <rect x="300" y="50" width="200" height="100" rx="4" fill="none" stroke="#5A9FD4" stroke-width="2"/>
+              <!-- AI Core -->
+              <rect x="310" y="60" width="80" height="35" rx="2" fill="none" stroke="#5A9FD4" stroke-width="1.2" opacity="0.6"/>
+              <text x="350" y="80" text-anchor="middle" fill="#8AA8C7" font-size="11" font-family="Inter, sans-serif" opacity="0.9">DAMOCLES</text>
+              <text x="350" y="92" text-anchor="middle" fill="#5A9FD4" font-size="9" font-family="Inter, sans-serif" opacity="0.6">AI CORE</text>
+              <!-- Sensor array -->
+              <rect x="400" y="60" width="90" height="35" rx="2" fill="none" stroke="#5A9FD4" stroke-width="1.2" opacity="0.6"/>
+              <circle cx="420" cy="77" r="6" fill="none" stroke="#5A9FD4" stroke-width="1" opacity="0.7"/>
+              <circle cx="420" cy="77" r="2.5" fill="#5A9FD4" opacity="0.6"/>
+              <circle cx="445" cy="77" r="6" fill="none" stroke="#5A9FD4" stroke-width="1" opacity="0.7"/>
+              <circle cx="445" cy="77" r="2.5" fill="#5A9FD4" opacity="0.6"/>
+              <circle cx="470" cy="77" r="6" fill="none" stroke="#5A9FD4" stroke-width="1" opacity="0.7"/>
+              <circle cx="470" cy="77" r="2.5" fill="#5A9FD4" opacity="0.6"/>
+              <text x="445" y="92" text-anchor="middle" fill="#5A9FD4" font-size="9" font-family="Inter, sans-serif" opacity="0.6">SENSORS</text>
+              <!-- Status indicator -->
+              <circle cx="320" cy="135" r="5" fill="#5A9FD4" opacity="0.8" filter="url(#glow)">
+                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <text x="338" y="138" fill="#8AA8C7" font-size="9" font-family="Inter, sans-serif" opacity="0.7">ACTIVE</text>
+              <!-- Antenna -->
+              <line x1="400" y1="50" x2="400" y2="24" stroke="#5A9FD4" stroke-width="2"/>
+              <circle cx="400" cy="20" r="5" fill="none" stroke="#5A9FD4" stroke-width="1.5"/>
+              <!-- Signal waves -->
+              <path d="M386 14 Q400 2 414 14" fill="none" stroke="#5A9FD4" stroke-width="1.2" opacity="0.5">
+                <animate attributeName="opacity" values="0.1;0.7;0.1" dur="2.5s" repeatCount="indefinite"/>
+              </path>
+              <path d="M378 8 Q400 -8 422 8" fill="none" stroke="#5A9FD4" stroke-width="1" opacity="0.4">
+                <animate attributeName="opacity" values="0.05;0.5;0.05" dur="2.5s" begin="0.4s" repeatCount="indefinite"/>
+              </path>
+              <path d="M370 2 Q400 -18 430 2" fill="none" stroke="#5A9FD4" stroke-width="0.8" opacity="0.3">
+                <animate attributeName="opacity" values="0.02;0.35;0.02" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+              </path>
+            </g>
+
+            <!-- Right solar panel -->
+            <g class="sat-panel-right">
+              <rect x="500" y="90" width="30" height="20" rx="1" fill="none" stroke="#5A9FD4" stroke-width="2"/>
+              <rect x="530" y="60" width="140" height="80" rx="2" fill="url(#panelGrad)" stroke="#5A9FD4" stroke-width="1.5"/>
+              <line x1="565" y1="60" x2="565" y2="140" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="600" y1="60" x2="600" y2="140" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="635" y1="60" x2="635" y2="140" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="530" y1="80" x2="670" y2="80" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="530" y1="100" x2="670" y2="100" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+              <line x1="530" y1="120" x2="670" y2="120" stroke="#5A9FD4" stroke-width="0.7" opacity="0.4"/>
+            </g>
+
+            <!-- MUNITIONS BAY -->
+            <g class="sat-munitions">
+              <rect x="330" y="150" width="140" height="30" rx="2" fill="none" stroke="#5A9FD4" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.7"/>
+              <text x="400" y="169" text-anchor="middle" fill="#8AA8C7" font-size="9" font-family="Inter, sans-serif" opacity="0.7">MUNITIONS BAY</text>
+
+              <!-- Kinetic rods -->
+              <rect x="345" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="358" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="371" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="384" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="397" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="410" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="423" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="436" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+              <rect x="449" y="182" width="7" height="40" rx="1" fill="#1E3A5F" stroke="#5A9FD4" stroke-width="1.2" opacity="0.8"/>
+
+              <!-- Rod tips -->
+              <polygon points="348.5,222 344,234 353,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="361.5,222 357,234 366,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="374.5,222 370,234 379,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="387.5,222 383,234 392,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="400.5,222 396,234 405,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="413.5,222 409,234 418,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="426.5,222 422,234 431,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="439.5,222 435,234 444,234" fill="#5A9FD4" opacity="0.7"/>
+              <polygon points="452.5,222 448,234 457,234" fill="#5A9FD4" opacity="0.7"/>
+
+              <!-- DROP ANIMATION - rod falling with trail -->
+              <!-- Trail glow -->
+              <rect x="395" y="182" width="11" height="120" rx="2" fill="url(#trailGrad)" opacity="0">
+                <animate attributeName="opacity" values="0;0;0;0;0.6;0.8;0.5;0.2;0" dur="6s" repeatCount="indefinite"/>
+                <animate attributeName="height" values="0;0;0;0;40;120;180;200;0" dur="6s" repeatCount="indefinite"/>
+              </rect>
+
+              <!-- Falling rod -->
+              <g>
+                <rect x="397" y="182" width="7" height="40" rx="1" fill="#5A9FD4" stroke="#8AA8C7" stroke-width="1.2" filter="url(#glowStrong)">
+                  <animate attributeName="opacity" values="0;0;0;0;1;1;0.8;0;0" dur="6s" repeatCount="indefinite"/>
+                </rect>
+                <polygon points="400.5,222 396,234 405,234" fill="#8AA8C7" opacity="0.9">
+                  <animate attributeName="opacity" values="0;0;0;0;0.9;0.9;0.6;0;0" dur="6s" repeatCount="indefinite"/>
+                </polygon>
+                <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,0;0,0;0,0;0,100;0,220;0,280;0,0" dur="6s" repeatCount="indefinite"/>
+              </g>
+
+              <!-- Impact flash -->
+              <circle cx="400" cy="480" r="0" fill="#5A9FD4" opacity="0" filter="url(#glowStrong)">
+                <animate attributeName="r" values="0;0;0;0;0;0;15;30;0" dur="6s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0;0;0;0;0;0;0.8;0;0" dur="6s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- Labels -->
+              <line x1="344" y1="205" x2="305" y2="205" stroke="#5A9FD4" stroke-width="0.8" opacity="0.4"/>
+              <line x1="305" y1="205" x2="305" y2="250" stroke="#5A9FD4" stroke-width="0.8" opacity="0.4"/>
+              <text x="305" y="264" text-anchor="middle" fill="#8AA8C7" font-size="10" font-family="Inter, sans-serif" opacity="0.8">TUNGSTEN</text>
+              <text x="305" y="276" text-anchor="middle" fill="#8AA8C7" font-size="10" font-family="Inter, sans-serif" opacity="0.8">KINETIC RODS</text>
+
+              <line x1="457" y1="205" x2="495" y2="205" stroke="#5A9FD4" stroke-width="0.8" opacity="0.4"/>
+              <line x1="495" y1="205" x2="495" y2="250" stroke="#5A9FD4" stroke-width="0.8" opacity="0.4"/>
+              <text x="495" y="264" text-anchor="middle" fill="#8AA8C7" font-size="10" font-family="Inter, sans-serif" opacity="0.8">9 PROJECTILES</text>
+              <text x="495" y="276" text-anchor="middle" fill="#8AA8C7" font-size="10" font-family="Inter, sans-serif" opacity="0.8">MACH 10 IMPACT</text>
+            </g>
+
+            <!-- Label -->
+            <text x="400" y="490" text-anchor="middle" fill="#8AA8C7" font-size="11" font-family="Inter, sans-serif" letter-spacing="4" opacity="0.7">DAMOCLES-SAT // SCHEMA TECHNIQUE</text>
+          </svg>
+        </div>
+
         <div class="steps">
 
           <div class="step">
@@ -51,8 +215,8 @@
                 <rect x="24" y="4" width="16" height="8" rx="2" fill="none" stroke="#1E3A5F" stroke-width="1.5"/>
               </svg>
               <h3>Detection</h3>
-              <p>Un reseau de 24 satellites en orbite basse surveille en temps reel l'ensemble de la surface terrestre. Tout mouvement militaire offensif est detecte : lancements de missiles, frappes aeriennes, deplacements de troupes a grande echelle, activations de systemes d'armes.</p>
-              <div class="step-detail">Imagerie multispectrale. Couverture globale. Resolution : 0,3m. Rafraichissement : 45 secondes.</div>
+              <p>Un réseau de 24 satellites en orbite basse surveille en temps réel l'ensemble de la surface terrestre. Tout mouvement militaire offensif est détecté : lancements de missiles, frappes aériennes, déplacements de troupes à grande échelle, activations de systèmes d'armes.</p>
+              <div class="step-detail">Imagerie multispectrale. Couverture globale. Résolution : 0,3m. Rafraîchissement : 45 secondes.</div>
             </div>
           </div>
 
@@ -72,7 +236,7 @@
                 <path d="M46 46 L38 38" stroke="#1E3A5F" stroke-width="1" stroke-dasharray="2 2"/>
               </svg>
               <h3>Analyse</h3>
-              <p>L'IA THEMIS identifie l'agresseur, la cible, la nature et l'ampleur de l'attaque. Elle croise les donnees de sources multiples : imagerie satellite, signaux radar, interceptions de communications, donnees de navigation aerienne et maritime.</p>
+              <p>L'IA DAMOCLES identifie l'agresseur, la cible, la nature et l'ampleur de l'attaque. Elle croise les données de sources multiples : imagerie satellite, signaux radar, interceptions de communications, données de navigation aérienne et maritime.</p>
               <div class="step-detail">Croisement multi-sources. Identification de l'agresseur en moins de 90 secondes. Taux de certitude minimum requis : 99,97%.</div>
             </div>
           </div>
@@ -89,8 +253,8 @@
                 <line x1="24" y1="56" x2="40" y2="56" stroke="#1E3A5F" stroke-width="1.5"/>
               </svg>
               <h3>Calibration</h3>
-              <p>THEMIS calcule la reponse proportionnelle selon la Loi du Talion stricte. Meme type de cible, meme intensite. L'IA applique les principes du droit international humanitaire pour definir les cibles militaires legitimes et exclure toute infrastructure civile.</p>
-              <div class="step-detail">Proportionnalite absolue. Application des Conventions de Geneve. Cibles militaires exclusivement.</div>
+              <p>DAMOCLES calcule la réponse proportionnelle selon la Loi du Talion stricte. Même type de cible, même intensité. L'IA applique les principes du droit international humanitaire pour définir les cibles militaires légitimes et exclure toute infrastructure civile.</p>
+              <div class="step-detail">Proportionnalité absolue. Application des Conventions de Genève. Cibles militaires exclusivement.</div>
             </div>
           </div>
 
@@ -107,8 +271,8 @@
                 <line x1="32" y1="14" x2="42" y2="24" stroke="#1E3A5F" stroke-width="1" opacity="0.4"/>
               </svg>
               <h3>Execution</h3>
-              <p>Frappe orbitale cinetique automatique. Aucune intervention humaine dans la boucle de decision. Le rapport complet de l'operation -- donnees, analyse, justification, resultat -- est publie sur le registre public dans les 24 heures.</p>
-              <div class="step-detail">Zero intervention humaine. Zero delai de deliberation politique. Zero partialite.</div>
+              <p>Frappe orbitale cinétique automatique. Aucune intervention humaine dans la boucle de décision. Le rapport complet de l'opération -- données, analyse, justification, résultat -- est publié sur le registre public dans les 24 heures.</p>
+              <div class="step-detail">Zéro intervention humaine. Zéro délai de délibération politique. Zéro partialité.</div>
             </div>
           </div>
 
@@ -134,7 +298,7 @@
 
         <div class="timeline-bar">
           <span class="number">4 min</span>
-          <span>Delai moyen entre detection de l'agression et reponse de THEMIS</span>
+          <span>Délai moyen entre détection de l'agression et réponse de DAMOCLES</span>
         </div>
       </div>
     </section>
@@ -142,7 +306,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2033 Drop the Peace. Organisation a but non lucratif. Geneve, Suisse.</p>
+      <p>&copy; 2033 Drop the Peace. Organisation à but non lucratif. Genève, Suisse.<br>Made with love by <a href="https://www.linkedin.com/in/elouanbegue/" target="_blank" style="color: rgba(255,255,255,0.7); text-decoration: underline;">Elouan BEGUE</a></p>
     </div>
   </footer>
 

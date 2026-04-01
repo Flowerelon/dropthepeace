@@ -11,14 +11,14 @@ if (navToggle) {
 // ===== COUNTER ANIMATION =====
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
-  const duration = 2000;
+  const duration = 3500;
   const start = performance.now();
 
   function update(now) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
-    // Ease-out cubic
-    const eased = 1 - Math.pow(1 - progress, 3);
+    // Ease-out exponential — very fast start, very slow end
+    const eased = 1 - Math.pow(1 - progress, 6);
     el.textContent = Math.floor(eased * target);
     if (progress < 1) {
       requestAnimationFrame(update);
