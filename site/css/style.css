@@ -893,3 +893,236 @@ main {
   margin-bottom: var(--space-xs);
   opacity: 0.7;
 }
+
+/* ===== GLOBAL DESIGN ENHANCEMENTS ===== */
+
+/* Subtle scan line overlay on all pages */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(11, 21, 40, 0.03) 2px,
+    rgba(11, 21, 40, 0.03) 4px
+  );
+}
+
+/* Section dividers with subtle line */
+section + section {
+  border-top: 1px solid rgba(30, 58, 95, 0.15);
+}
+
+/* Enhanced page headers with background glow */
+.page-header {
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(11, 21, 40, 0.6) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.page-header h1 {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* Better hover on trait cards */
+.trait {
+  transition: all var(--transition);
+}
+
+.trait:hover {
+  border-color: rgba(30, 58, 95, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 30px rgba(11, 21, 40, 0.8);
+}
+
+/* Enhanced solution block */
+.solution {
+  position: relative;
+  overflow: hidden;
+}
+
+.solution::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(30, 58, 95, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Glow effect on step numbers */
+.step-number {
+  text-shadow: 0 0 20px rgba(30, 58, 95, 0.5);
+}
+
+/* Better button with glow on hover */
+.btn {
+  position: relative;
+}
+
+.btn:hover {
+  box-shadow: 0 0 30px rgba(30, 58, 95, 0.4);
+}
+
+/* Animated underline on nav links */
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-blue-light);
+  transition: width var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* FAQ item hover effect */
+.faq-question:hover {
+  padding-left: var(--space-xs);
+}
+
+/* Enhanced timeline bar */
+.timeline-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(30, 58, 95, 0.2), transparent);
+  animation: scanHorizontal 4s ease-in-out infinite;
+}
+
+@keyframes scanHorizontal {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Constat items - stagger appearance */
+.constat-item {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.6s ease forwards;
+}
+
+.constat-item:nth-child(1) { animation-delay: 0.1s; }
+.constat-item:nth-child(2) { animation-delay: 0.3s; }
+.constat-item:nth-child(3) { animation-delay: 0.5s; }
+.constat-item:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Steps - stagger appearance */
+.step {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.step:nth-child(1) { animation-delay: 0.1s; }
+.step:nth-child(2) { animation-delay: 0.3s; }
+.step:nth-child(3) { animation-delay: 0.5s; }
+.step:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Traits - stagger appearance */
+.trait {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: scaleIn 0.5s ease forwards;
+}
+
+.trait:nth-child(1) { animation-delay: 0.1s; }
+.trait:nth-child(2) { animation-delay: 0.2s; }
+.trait:nth-child(3) { animation-delay: 0.3s; }
+.trait:nth-child(4) { animation-delay: 0.4s; }
+.trait:nth-child(5) { animation-delay: 0.5s; }
+.trait:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Footer enhancement */
+footer {
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-blue-light), transparent);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(30, 58, 95, 0.5);
+  color: var(--color-white);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-blue-mid);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-light);
+}
