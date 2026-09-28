@@ -4,7 +4,7 @@ A design-fiction website for a fictional private company that has deployed an AI
 
 ![Drop the Peace homepage](docs/homepage.webp)
 
-Live site: https://flowerelon.github.io/dropthepeace/
+Live site: https://studioflower-fr.github.io/dropthepeace/
 
 ## What it does
 
